@@ -107,7 +107,8 @@ main.container {
 .links-section,
 .table-section,
 .form-section,
-.calculator-section {
+.calculator-section,
+.gallery-section {
   min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -119,8 +120,30 @@ main.container {
 .links-section:hover,
 .table-section:hover,
 .form-section:hover,
-.calculator-section:hover {
+.calculator-section:hover,
+.gallery-section:hover {
   box-shadow: var(--shadow-hover);
+}
+
+.gallery-viewport {
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 16px;
+}
+
+.gallery-placeholder {
+  display: flex;
+  flex: 0 0 calc((100% - 32px) / 3);
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  background: var(--surface-alt);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--muted);
 }
 
 .calculator-section {
@@ -989,6 +1012,10 @@ form input[type="submit"]:hover {
 }
 
 @media screen and (max-width: 991.98px) {
+
+  .gallery-placeholder {
+    flex-basis: 100%;
+  }
 
   .calculator-layout,
   .calculator-layout>.row {
