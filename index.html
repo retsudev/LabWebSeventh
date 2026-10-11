@@ -14,7 +14,7 @@
 <body>
 
   <header id="site-header">
-    <img src="header.jpg" alt="Логотип">
+    <img src="images/header.jpg" alt="Логотип">
     <h1>Лабораторная работа №7</h1>
   </header>
 
@@ -310,7 +310,7 @@
 
             <li>
               <a href="https://kubsu.ru/">
-                <img src="image.jpg" alt="КубГУ" width="200">
+                <img src="images/flower.jpg" alt="Жёлтый цветок" width="200">
               </a>
             </li>
 
@@ -383,7 +383,7 @@
             </li>
 
             <li>
-              <img src="image.jpg" alt="Картинка" width="400" height="300" class="responsive-map-image" usemap="#map">
+              <img src="images/flower.jpg" alt="Жёлтый цветок крупным планом" width="400" height="300" class="responsive-map-image" usemap="#map">
 
               <map name="map">
                 <area shape="poly" coords="0,0,100,0,0,75" href="https://kubsu.ru/" alt="КубГУ">
@@ -444,22 +444,60 @@
         </section>
       </div>
 
-      <!-- Gallery layout placeholder -->
+      <!-- Gallery -->
 
       <div class="col-12 order-4 order-lg-3 gallery-column">
         <section class="gallery-section p-3 p-lg-4">
-          <h2 id="gallery" class="mb-3">Слайдер</h2>
+          <h2 id="gallery" class="mb-3">Галерея обоев</h2>
 
-          <div class="gallery-viewport">
-            <div class="gallery-track">
-              <div class="gallery-placeholder">Изображение 1</div>
-              <div class="gallery-placeholder">Изображение 2</div>
-              <div class="gallery-placeholder">Изображение 3</div>
-              <div class="gallery-placeholder">Изображение 4</div>
-              <div class="gallery-placeholder">Изображение 5</div>
-              <div class="gallery-placeholder">Изображение 6</div>
-              <div class="gallery-placeholder">Изображение 7</div>
-              <div class="gallery-placeholder">Изображение 8</div>
+          <div class="gallery-stage">
+            <button class="gallery-arrow gallery-arrow-previous" type="button" aria-label="Предыдущее изображение">
+              <span aria-hidden="true">&#8592;</span>
+            </button>
+
+            <div class="gallery-viewport" aria-label="Галерея изображений">
+              <article class="gallery-slide" data-slide="1">
+                <img src="images/girl1.jpg" alt="Аниме-портрет девушки с голубыми волосами">
+              </article>
+              <article class="gallery-slide is-previous" data-slide="2">
+                <img src="images/blackhole.jpg" alt="Светящийся горизонт чёрной дыры">
+              </article>
+              <article class="gallery-slide is-active" data-slide="3" aria-current="true">
+                <img src="images/girl2.jpg" alt="Футуристичный андроид в профиль">
+              </article>
+              <article class="gallery-slide is-next" data-slide="4">
+                <img src="images/star1.jpg" alt="Светящаяся стеклянная звезда">
+              </article>
+              <article class="gallery-slide" data-slide="5">
+                <img src="images/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы">
+              </article>
+              <article class="gallery-slide" data-slide="6">
+                <img src="images/vagabond.jpg" alt="Монохромная иллюстрация самурая">
+              </article>
+              <article class="gallery-slide" data-slide="7">
+                <img src="images/girl4.jpg" alt="Аниме-портрет девушки на фоне облачного неба">
+              </article>
+              <article class="gallery-slide" data-slide="8">
+                <img src="images/bluestar1.jpg" alt="Голубая звезда среди тёмных облаков">
+              </article>
+            </div>
+
+            <button class="gallery-arrow gallery-arrow-next" type="button" aria-label="Следующее изображение">
+              <span aria-hidden="true">&#8594;</span>
+            </button>
+          </div>
+
+          <div class="gallery-footer">
+            <p class="gallery-status" aria-live="polite">Изображение 3 из 8</p>
+            <div class="gallery-pagination" aria-label="Страницы галереи">
+              <button type="button" aria-label="Изображение 1"></button>
+              <button type="button" aria-label="Изображение 2"></button>
+              <button type="button" aria-label="Изображение 3" aria-current="page"></button>
+              <button type="button" aria-label="Изображение 4"></button>
+              <button type="button" aria-label="Изображение 5"></button>
+              <button type="button" aria-label="Изображение 6"></button>
+              <button type="button" aria-label="Изображение 7"></button>
+              <button type="button" aria-label="Изображение 8"></button>
             </div>
           </div>
         </section>

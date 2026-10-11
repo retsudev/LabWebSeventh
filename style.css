@@ -125,25 +125,163 @@ main.container {
   box-shadow: var(--shadow-hover);
 }
 
-.gallery-viewport {
+.gallery-section {
+  --gallery-stage: #25272b;
+  --gallery-card: #111216;
+}
+
+.gallery-stage {
+  position: relative;
+  height: clamp(520px, 58vw, 760px);
   overflow: hidden;
+  background: radial-gradient(ellipse at center, #383b40 0%, var(--gallery-stage) 68%);
+  border: 1px solid #41444a;
+  border-radius: 12px;
+  perspective: 1400px;
+  isolation: isolate;
 }
 
-.gallery-track {
-  display: flex;
-  gap: 16px;
+.gallery-viewport {
+  position: absolute;
+  inset: 0;
 }
 
-.gallery-placeholder {
+.gallery-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: flex;
-  flex: 0 0 calc((100% - 32px) / 3);
+  width: clamp(240px, 27%, 370px);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 4 / 3;
-  background: var(--surface-alt);
-  border: 1px dashed var(--border);
-  border-radius: 6px;
+  background: var(--gallery-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.74);
+  transition: transform 420ms ease, opacity 420ms ease, filter 420ms ease;
+  will-change: transform, opacity;
+}
+
+.gallery-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-slide.is-previous,
+.gallery-slide.is-next {
+  z-index: 1;
+  width: clamp(220px, 25%, 340px);
+  opacity: 0.72;
+  filter: saturate(0.72) brightness(0.78);
+}
+
+.gallery-slide.is-previous {
+  left: calc(50% - min(25%, 330px));
+  transform: translate(-50%, -50%) perspective(1000px) rotateY(24deg) scale(0.84);
+}
+
+.gallery-slide.is-next {
+  left: calc(50% + min(25%, 330px));
+  transform: translate(-50%, -50%) perspective(1000px) rotateY(-24deg) scale(0.84);
+}
+
+.gallery-slide.is-active {
+  z-index: 2;
+  width: clamp(260px, 28%, 390px);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.gallery-slide-pending {
   color: var(--muted);
+  font-size: 14px;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  place-items: center;
+  background: rgba(55, 58, 64, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: #f2f3f4;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.gallery-arrow:hover {
+  background: #50545b;
+}
+
+.gallery-arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.gallery-arrow:focus-visible,
+.gallery-pagination button:focus-visible {
+  outline: 3px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+.gallery-arrow-previous {
+  left: 20px;
+}
+
+.gallery-arrow-next {
+  right: 20px;
+}
+
+.gallery-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 4px 0;
+}
+
+.gallery-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.gallery-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.gallery-pagination button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  background: #74777d;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.gallery-pagination button[aria-current="page"] {
+  background: var(--accent-light);
+  transform: scale(1.3);
 }
 
 .calculator-section {
@@ -1013,8 +1151,20 @@ form input[type="submit"]:hover {
 
 @media screen and (max-width: 991.98px) {
 
-  .gallery-placeholder {
-    flex-basis: 100%;
+  .gallery-stage {
+    height: clamp(440px, 72vw, 640px);
+  }
+
+  .gallery-slide.is-active {
+    width: 40%;
+  }
+
+  .gallery-slide.is-previous {
+    left: 29%;
+  }
+
+  .gallery-slide.is-next {
+    left: 71%;
   }
 
   .calculator-layout,
@@ -1284,6 +1434,65 @@ form input[type="submit"]:hover {
 
   .calculator-section #calculator-result {
     font-size: 21px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .gallery-stage {
+    height: clamp(430px, 125vw, 590px);
+    border-radius: 10px;
+  }
+
+  .gallery-slide {
+    width: min(48vw, 280px);
+  }
+
+  .gallery-slide.is-active {
+    width: min(54vw, 310px);
+  }
+
+  .gallery-slide.is-previous,
+  .gallery-slide.is-next {
+    width: min(48vw, 280px);
+  }
+
+  .gallery-slide.is-previous {
+    left: 8%;
+    transform: translate(-50%, -50%) perspective(800px) rotateY(28deg) scale(0.86);
+  }
+
+  .gallery-slide.is-next {
+    left: 92%;
+    transform: translate(-50%, -50%) perspective(800px) rotateY(-28deg) scale(0.86);
+  }
+
+  .gallery-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+
+  .gallery-arrow-previous {
+    left: 8px;
+  }
+
+  .gallery-arrow-next {
+    right: 8px;
+  }
+
+  .gallery-footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+    padding-top: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-slide,
+  .gallery-arrow,
+  .gallery-pagination button {
+    transition-duration: 0.01ms;
   }
 }
 
