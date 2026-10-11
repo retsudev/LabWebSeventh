@@ -132,15 +132,18 @@ main.container {
 
 .gallery-stage {
   position: relative;
-  height: clamp(520px, 58vw, 760px);
+  height: min(94vh, 900px);
+  min-height: 560px;
   overflow: hidden;
   background: radial-gradient(ellipse at center, #383b40 0%, var(--gallery-stage) 68%);
   border: 1px solid #41444a;
   border-radius: 12px;
   cursor: grab;
   perspective: 1400px;
+  transform-style: preserve-3d;
   isolation: isolate;
   touch-action: pan-y;
+  user-select: none;
 }
 
 .gallery-stage.is-dragging {
@@ -153,11 +156,19 @@ main.container {
 }
 
 .gallery-slide {
+  --slide-x: 0px;
+  --slide-scale: 0.5;
+  --slide-depth: 0px;
+  --slide-rotation: 0deg;
+  --slide-opacity: 0;
+  --slide-saturation: 1;
+  --slide-brightness: 1;
+
   position: absolute;
   top: 50%;
   left: 50%;
   display: flex;
-  width: clamp(240px, 27%, 370px);
+  width: clamp(300px, 34%, 468px);
   aspect-ratio: 9 / 16;
   overflow: hidden;
   align-items: center;
@@ -166,9 +177,12 @@ main.container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
-  opacity: 0;
+  opacity: var(--slide-opacity);
+  filter: saturate(var(--slide-saturation)) brightness(var(--slide-brightness));
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(0.74);
+  transform: translate(-50%, -50%) translateX(var(--slide-x))
+    translateZ(var(--slide-depth)) perspective(1000px) rotateY(var(--slide-rotation))
+    scale(var(--slide-scale));
   transition: transform 420ms ease, opacity 420ms ease, filter 420ms ease;
   will-change: transform, opacity;
 }
@@ -180,48 +194,13 @@ main.container {
   object-fit: cover;
 }
 
-.gallery-slide.is-previous,
-.gallery-slide.is-next {
-  z-index: 2;
-  width: clamp(220px, 25%, 340px);
-  opacity: 0.72;
-  filter: saturate(0.72) brightness(0.78);
-}
-
-.gallery-slide.is-previous {
-  left: calc(50% - min(25%, 330px));
-  transform: translate(-50%, -50%) perspective(1000px) rotateY(24deg) scale(0.84);
-}
-
-.gallery-slide.is-next {
-  left: calc(50% + min(25%, 330px));
-  transform: translate(-50%, -50%) perspective(1000px) rotateY(-24deg) scale(0.84);
-}
-
 .gallery-slide.is-active {
-  z-index: 3;
-  width: clamp(260px, 28%, 390px);
-  opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%, -50%) scale(1);
 }
 
-.gallery-slide.is-far-previous,
-.gallery-slide.is-far-next {
-  z-index: 1;
-  width: clamp(180px, 20%, 280px);
-  opacity: 0.38;
-  filter: saturate(0.55) brightness(0.62);
-}
-
-.gallery-slide.is-far-previous {
-  left: calc(50% - min(40%, 520px));
-  transform: translate(-50%, -50%) perspective(1000px) rotateY(34deg) scale(0.72);
-}
-
-.gallery-slide.is-far-next {
-  left: calc(50% + min(40%, 520px));
-  transform: translate(-50%, -50%) perspective(1000px) rotateY(-34deg) scale(0.72);
+.gallery-stage.is-dragging .gallery-slide,
+.gallery-stage.is-wheel-moving .gallery-slide {
+  transition: none;
 }
 
 .gallery-arrow {
@@ -246,6 +225,11 @@ main.container {
 
 .gallery-arrow:hover {
   background: #50545b;
+}
+
+.gallery-arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
 }
 
 .gallery-arrow:active {
@@ -1174,21 +1158,8 @@ form input[type="submit"]:hover {
     height: clamp(440px, 72vw, 640px);
   }
 
-  .gallery-slide.is-active {
+  .gallery-slide {
     width: 40%;
-  }
-
-  .gallery-slide.is-previous {
-    left: 29%;
-  }
-
-  .gallery-slide.is-next {
-    left: 71%;
-  }
-
-  .gallery-slide.is-far-previous,
-  .gallery-slide.is-far-next {
-    display: none;
   }
 
   .calculator-layout,
@@ -1468,26 +1439,7 @@ form input[type="submit"]:hover {
   }
 
   .gallery-slide {
-    width: min(48vw, 280px);
-  }
-
-  .gallery-slide.is-active {
     width: min(54vw, 310px);
-  }
-
-  .gallery-slide.is-previous,
-  .gallery-slide.is-next {
-    width: min(48vw, 280px);
-  }
-
-  .gallery-slide.is-previous {
-    left: 8%;
-    transform: translate(-50%, -50%) perspective(800px) rotateY(28deg) scale(0.86);
-  }
-
-  .gallery-slide.is-next {
-    left: 92%;
-    transform: translate(-50%, -50%) perspective(800px) rotateY(-28deg) scale(0.86);
   }
 
   .gallery-arrow {
