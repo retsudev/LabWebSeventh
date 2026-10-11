@@ -450,35 +450,35 @@
         <section class="gallery-section p-3 p-lg-4">
           <h2 id="gallery" class="mb-3">Галерея обоев</h2>
 
-          <div class="gallery-stage">
+          <div class="gallery-stage" tabindex="0" role="region" aria-label="Галерея обоев">
             <button class="gallery-arrow gallery-arrow-previous" type="button" aria-label="Предыдущее изображение">
               <span aria-hidden="true">&#8592;</span>
             </button>
 
-            <div class="gallery-viewport" aria-label="Галерея изображений">
-              <article class="gallery-slide" data-slide="1">
-                <img src="images/girl1.jpg" alt="Аниме-портрет девушки с голубыми волосами">
+            <div class="gallery-viewport" role="group" aria-label="Слайды галереи">
+              <article class="gallery-slide" data-slide="1" aria-label="Изображение 1 из 8">
+                <img src="images/girl1.jpg" alt="Аниме-портрет девушки с голубыми волосами" draggable="false">
               </article>
-              <article class="gallery-slide is-previous" data-slide="2">
-                <img src="images/blackhole.jpg" alt="Светящийся горизонт чёрной дыры">
+              <article class="gallery-slide is-previous" data-slide="2" aria-label="Изображение 2 из 8">
+                <img src="images/blackhole.jpg" alt="Светящийся горизонт чёрной дыры" draggable="false">
               </article>
-              <article class="gallery-slide is-active" data-slide="3" aria-current="true">
-                <img src="images/girl2.jpg" alt="Футуристичный андроид в профиль">
+              <article class="gallery-slide is-active" data-slide="3" aria-label="Изображение 3 из 8" aria-current="true">
+                <img src="images/girl2.jpg" alt="Футуристичный андроид в профиль" draggable="false">
               </article>
-              <article class="gallery-slide is-next" data-slide="4">
-                <img src="images/star1.jpg" alt="Светящаяся стеклянная звезда">
+              <article class="gallery-slide is-next" data-slide="4" aria-label="Изображение 4 из 8">
+                <img src="images/star1.jpg" alt="Светящаяся стеклянная звезда" draggable="false">
               </article>
-              <article class="gallery-slide" data-slide="5">
-                <img src="images/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы">
+              <article class="gallery-slide" data-slide="5" aria-label="Изображение 5 из 8">
+                <img src="images/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы" draggable="false">
               </article>
-              <article class="gallery-slide" data-slide="6">
-                <img src="images/vagabond.jpg" alt="Монохромная иллюстрация самурая">
+              <article class="gallery-slide" data-slide="6" aria-label="Изображение 6 из 8">
+                <img src="images/vagabond.jpg" alt="Монохромная иллюстрация самурая" draggable="false">
               </article>
-              <article class="gallery-slide" data-slide="7">
-                <img src="images/girl4.jpg" alt="Аниме-портрет девушки на фоне облачного неба">
+              <article class="gallery-slide" data-slide="7" aria-label="Изображение 7 из 8">
+                <img src="images/girl4.jpg" alt="Аниме-портрет девушки на фоне облачного неба" draggable="false">
               </article>
-              <article class="gallery-slide" data-slide="8">
-                <img src="images/bluestar1.jpg" alt="Голубая звезда среди тёмных облаков">
+              <article class="gallery-slide" data-slide="8" aria-label="Изображение 8 из 8">
+                <img src="images/bluestar1.jpg" alt="Голубая звезда среди тёмных облаков" draggable="false">
               </article>
             </div>
 
@@ -489,7 +489,7 @@
 
           <div class="gallery-footer">
             <p class="gallery-status" aria-live="polite">Изображение 3 из 8</p>
-            <div class="gallery-pagination" aria-label="Страницы галереи">
+            <div class="gallery-pagination" role="group" aria-label="Выбор изображения">
               <button type="button" aria-label="Изображение 1"></button>
               <button type="button" aria-label="Изображение 2"></button>
               <button type="button" aria-label="Изображение 3" aria-current="page"></button>
@@ -687,7 +687,10 @@
     (с) Бондаренко Андрей Евгеньевич
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/image-map.js"></script>
+  <script src="js/form-validation.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/gallery.js"></script>
 
 </body>
 

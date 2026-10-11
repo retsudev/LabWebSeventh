@@ -137,8 +137,14 @@ main.container {
   background: radial-gradient(ellipse at center, #383b40 0%, var(--gallery-stage) 68%);
   border: 1px solid #41444a;
   border-radius: 12px;
+  cursor: grab;
   perspective: 1400px;
   isolation: isolate;
+  touch-action: pan-y;
+}
+
+.gallery-stage.is-dragging {
+  cursor: grabbing;
 }
 
 .gallery-viewport {
@@ -176,7 +182,7 @@ main.container {
 
 .gallery-slide.is-previous,
 .gallery-slide.is-next {
-  z-index: 1;
+  z-index: 2;
   width: clamp(220px, 25%, 340px);
   opacity: 0.72;
   filter: saturate(0.72) brightness(0.78);
@@ -193,16 +199,29 @@ main.container {
 }
 
 .gallery-slide.is-active {
-  z-index: 2;
+  z-index: 3;
   width: clamp(260px, 28%, 390px);
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
 }
 
-.gallery-slide-pending {
-  color: var(--muted);
-  font-size: 14px;
+.gallery-slide.is-far-previous,
+.gallery-slide.is-far-next {
+  z-index: 1;
+  width: clamp(180px, 20%, 280px);
+  opacity: 0.38;
+  filter: saturate(0.55) brightness(0.62);
+}
+
+.gallery-slide.is-far-previous {
+  left: calc(50% - min(40%, 520px));
+  transform: translate(-50%, -50%) perspective(1000px) rotateY(34deg) scale(0.72);
+}
+
+.gallery-slide.is-far-next {
+  left: calc(50% + min(40%, 520px));
+  transform: translate(-50%, -50%) perspective(1000px) rotateY(-34deg) scale(0.72);
 }
 
 .gallery-arrow {
@@ -1165,6 +1184,11 @@ form input[type="submit"]:hover {
 
   .gallery-slide.is-next {
     left: 71%;
+  }
+
+  .gallery-slide.is-far-previous,
+  .gallery-slide.is-far-next {
+    display: none;
   }
 
   .calculator-layout,
