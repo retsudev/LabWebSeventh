@@ -287,17 +287,36 @@ document.addEventListener("DOMContentLoaded", () => {
     updateGallery();
   }
 
-  if (previousButton) {
-    previousButton.addEventListener("click", () => {
-      goToSlide(currentIndex - 1);
+  function bindArrow(button, direction) {
+    if (!button) {
+      return;
+    }
+
+    let touchClickSuppressedUntil = 0;
+
+    button.addEventListener("pointerup", event => {
+      if (event.pointerType !== "touch") {
+        return;
+      }
+
+      touchClickSuppressedUntil = Date.now() + 800;
+      goToSlide(currentIndex + direction);
+    });
+
+    button.addEventListener("click", event => {
+      if (
+        event.detail !== 0
+        && Date.now() < touchClickSuppressedUntil
+      ) {
+        return;
+      }
+
+      goToSlide(currentIndex + direction);
     });
   }
 
-  if (nextButton) {
-    nextButton.addEventListener("click", () => {
-      goToSlide(currentIndex + 1);
-    });
-  }
+  bindArrow(previousButton, -1);
+  bindArrow(nextButton, 1);
 
   paginationButtons.forEach((button, index) => {
     button.addEventListener("click", () => {

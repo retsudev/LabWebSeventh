@@ -3,24 +3,24 @@
 }
 
 :root {
-  --bg: #181616;
-  --surface: #1d1c19;
-  --surface-alt: #282727;
-  --surface-raised: #302f2c;
-  --text: #c5c9c5;
-  --muted: #a6a69c;
-  --primary: #1d1c19;
-  --primary-light: #282727;
-  --accent: #87a987;
-  --accent-light: #a3c9a0;
-  --accent-dark: #87a987;
-  --logo-accent: #87a987;
-  --border: #393836;
-  --success: #87a987;
-  --error: #c4746e;
-  --warning: #c4b28a;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  --shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.28);
+  --bg: #070a14;
+  --surface: #0d1323;
+  --surface-alt: #121b2d;
+  --surface-raised: #18243a;
+  --text: #e2eaff;
+  --muted: #a6b4d6;
+  --primary: #0d1323;
+  --primary-light: #121b2d;
+  --accent: #3d6dff;
+  --accent-light: #8eabff;
+  --accent-dark: #245bff;
+  --logo-accent: #8eabff;
+  --border: #263149;
+  --success: #83a6ff;
+  --error: #ff858f;
+  --warning: #f0c879;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.36), 0 0 20px rgba(36, 91, 255, 0.025);
+  --shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.46), 0 0 22px rgba(36, 91, 255, 0.065);
 }
 
 html {
@@ -31,7 +31,7 @@ html {
 body {
   position: relative;
   margin: 0;
-  background: var(--bg);
+  background: radial-gradient(ellipse at 50% -25%, rgba(36, 91, 255, 0.07), transparent 58%), var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -54,13 +54,26 @@ main.container {
 }
 
 #site-header {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   min-height: 110px;
   padding: 20px 15px;
-  background: var(--surface);
+  background: linear-gradient(112deg, #0c1323 0%, #0e172a 58%, #111c32 100%);
   color: var(--text);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #293854;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.34);
+}
+
+#site-header::after {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  left: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(91, 137, 255, 0.8), transparent);
+  content: "";
 }
 
 #site-header img {
@@ -69,20 +82,36 @@ main.container {
   flex-shrink: 0;
   margin-right: 15px;
   object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  border: 2px solid rgba(142, 171, 255, 0.56);
+  border-radius: 20px;
+  box-shadow: 0 0 26px rgba(36, 91, 255, 0.18);
 }
 
 #site-header h1 {
+  position: relative;
   margin: 0;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 18px rgba(95, 137, 255, 0.2);
+}
+
+#site-header h1::after {
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 11px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  box-shadow: 0 0 14px rgba(61, 109, 255, 0.55);
+  content: "";
 }
 
 #site-nav {
-  background: var(--surface);
+  gap: 6px;
+  padding: 8px;
+  background: rgba(10, 15, 27, 0.98);
   border-bottom: 1px solid var(--border);
 }
 
@@ -91,16 +120,20 @@ main.container {
   color: var(--text);
   text-align: center;
   text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  transition: background-color 0.16s ease, color 0.16s ease;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 #site-nav a:last-child {
-  border-bottom: 0;
+  border: 1px solid transparent;
 }
 
 #site-nav a:hover {
-  background: var(--surface-alt);
+  transform: translateY(-1px);
+  border-color: rgba(142, 171, 255, 0.35);
+  background: rgba(61, 109, 255, 0.12);
   color: var(--accent-light);
 }
 
@@ -112,7 +145,7 @@ main.container {
   min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: var(--shadow);
   transition: border-color 0.16s ease, box-shadow 0.16s ease;
 }
@@ -126,8 +159,8 @@ main.container {
 }
 
 .gallery-section {
-  --gallery-stage: #25272b;
-  --gallery-card: #111216;
+  --gallery-stage: #0e1629;
+  --gallery-card: #070a14;
 }
 
 .gallery-stage {
@@ -135,8 +168,8 @@ main.container {
   height: min(94vh, 900px);
   min-height: 560px;
   overflow: hidden;
-  background: radial-gradient(ellipse at center, #383b40 0%, var(--gallery-stage) 68%);
-  border: 1px solid #41444a;
+  background: radial-gradient(ellipse at center, rgba(36, 91, 255, 0.08) 0%, var(--gallery-stage) 60%, #0b1120 100%);
+  border: 1px solid #293751;
   border-radius: 12px;
   cursor: grab;
   perspective: 1400px;
@@ -150,8 +183,31 @@ main.container {
   cursor: grabbing;
 }
 
+.gallery-stage::before {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: min(92%, 1400px);
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(102, 196, 255, 0.9) 0%,
+    rgba(63, 145, 255, 0.68) 24%,
+    rgba(36, 91, 255, 0.36) 48%,
+    rgba(36, 91, 255, 0) 72%
+  );
+  content: "";
+  filter: blur(82px);
+  opacity: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
 .gallery-viewport {
   position: absolute;
+  z-index: 1;
   inset: 0;
 }
 
@@ -212,19 +268,23 @@ main.container {
   height: 48px;
   padding: 0;
   place-items: center;
-  background: rgba(55, 58, 64, 0.86);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  border: 0;
   border-radius: 50%;
-  color: #f2f3f4;
+  color: #c8dcff;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 38px;
   line-height: 1;
+  text-shadow: 0 0 14px rgba(102, 196, 255, 0.42);
   transform: translateY(-50%);
-  transition: background-color 160ms ease, transform 160ms ease;
+  transition: color 180ms ease, text-shadow 180ms ease, transform 180ms ease;
 }
 
 .gallery-arrow:hover {
-  background: #50545b;
+  background: transparent;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(102, 196, 255, 0.82);
+  transform: translateY(-50%) scale(1.12);
 }
 
 .gallery-arrow:disabled {
@@ -318,7 +378,7 @@ main li {
 
 main a {
   color: var(--accent);
-  text-decoration-color: rgba(135, 169, 135, 0.55);
+  text-decoration-color: rgba(142, 171, 255, 0.62);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -443,7 +503,7 @@ form .form-select:focus {
   border-color: var(--accent);
   background-color: var(--surface-raised);
   color: var(--text);
-  box-shadow: 0 0 0 2px rgba(135, 169, 135, 0.2);
+  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
 }
 
 form input[type="date"] {
@@ -469,7 +529,7 @@ form .form-check-input:checked {
 
 form .form-check-input:focus {
   border-color: var(--accent-light);
-  box-shadow: 0 0 0 2px rgba(135, 169, 135, 0.2);
+  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
 }
 
 .gender-options {
@@ -502,7 +562,7 @@ form .form-check-input:focus {
 
 .gender-options .form-check-input:focus {
   border-color: var(--accent-light);
-  box-shadow: 0 0 0 2px rgba(135, 169, 135, 0.2);
+  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
 }
 
 .biography-field textarea {
@@ -645,7 +705,7 @@ form .form-check-input:focus {
 .calculator-plan-select:focus {
   border-color: var(--accent);
   outline: 0;
-  box-shadow: 0 0 0 2px rgba(135, 169, 135, 0.2);
+  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
 }
 
 .calculator-gemini-extra {
@@ -680,7 +740,7 @@ form .form-check-input:focus {
 
 .calculator-feature .form-check-input:focus {
   border-color: var(--accent-light);
-  box-shadow: 0 0 0 2px rgba(135, 169, 135, 0.2);
+  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
 }
 
 .calculator-feature-copy {
@@ -766,7 +826,7 @@ form .form-check-input:focus {
 
 .calculator-button-plus {
   border-color: var(--success);
-  background: rgba(135, 169, 135, 0.1);
+  background: rgba(61, 109, 255, 0.12);
   color: var(--success);
 }
 
@@ -810,7 +870,7 @@ form .form-check-input:focus {
 .calculator-product-quantity:focus {
   border-color: var(--accent);
   outline: 0;
-  box-shadow: 0 0 0 2px rgba(135, 169, 135, 0.2);
+  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
 }
 
 .calculator-product-quantity.has-value {
@@ -850,7 +910,7 @@ form .form-check-input:focus {
 
 .calculator-product-toggle[aria-pressed="true"] {
   border-color: var(--success);
-  background: rgba(135, 169, 135, 0.14);
+  background: rgba(61, 109, 255, 0.16);
   color: var(--success);
 }
 
@@ -898,7 +958,6 @@ form .form-check-input:focus {
   gap: 8px;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid var(--border);
 }
 
 .calculator-total-label {
@@ -967,11 +1026,24 @@ form input[type="submit"]:hover {
 }
 
 #site-footer {
+  position: relative;
+  overflow: hidden;
   padding: 22px 15px;
-  background: var(--surface);
+  background: linear-gradient(112deg, #0c1323, #0a111f 55%, #101a2d);
   color: var(--muted);
   text-align: center;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #293854;
+  letter-spacing: 0.035em;
+}
+
+#site-footer::before {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  left: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(91, 137, 255, 0.72), transparent);
+  content: "";
 }
 
 @media screen and (min-width: 992px) {
@@ -1150,8 +1222,10 @@ form input[type="submit"]:hover {
     grid-row: 3;
     min-height: 0;
     margin: 0;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .calculator-section .calculator-product-details>summary {
@@ -1161,6 +1235,10 @@ form input[type="submit"]:hover {
   .calculator-section .calculator-product-description {
     margin-top: auto;
     margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .calculator-section .calculator-quantity-group {
@@ -1478,7 +1556,7 @@ form input[type="submit"]:hover {
   .gallery-arrow {
     width: 42px;
     height: 42px;
-    font-size: 21px;
+    font-size: 32px;
   }
 
   .gallery-arrow-previous {
@@ -1618,5 +1696,91 @@ form input[type="submit"]:hover {
 @media screen and (max-width: 575.98px) {
   .calculator-section .calculator-product-name {
     font-size: 32px;
+  }
+}
+
+/* Rounded surfaces for the refreshed midnight-blue theme */
+.links-section img,
+.table-scroll,
+table {
+  border-radius: 14px;
+}
+
+.gallery-stage {
+  border-radius: 20px;
+}
+
+.gallery-slide {
+  border-radius: 16px;
+}
+
+.calculator-product {
+  border-radius: 18px;
+}
+
+form .form-control,
+form .form-select,
+.calculator-plan-select,
+.calculator-product-quantity {
+  border-radius: 12px;
+}
+
+.calculator-button,
+.calculator-product-toggle,
+.calculator-product-details {
+  border-radius: 14px;
+}
+
+.calculator-feature .form-check-input,
+form input[type="checkbox"] {
+  border-radius: 6px;
+}
+
+form input[type="radio"] {
+  border-radius: 50%;
+}
+
+form input[type="submit"] {
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(36, 91, 255, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 22px rgba(36, 91, 255, 0.32);
+}
+
+@media screen and (max-width: 767.98px) {
+  .gallery-stage {
+    border-radius: 16px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .links-section {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  #site-nav a[href="#table"] {
+    order: 1;
+  }
+
+  #site-nav a[href="#links"] {
+    order: 2;
+  }
+
+  #site-nav a[href="#calculator"] {
+    order: 3;
+  }
+
+  #site-nav a[href="#gallery"] {
+    order: 4;
+  }
+
+  #site-nav a[href="#form"] {
+    order: 5;
   }
 }
