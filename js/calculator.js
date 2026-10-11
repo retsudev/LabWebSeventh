@@ -1,111 +1,4 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  const image = document.querySelector(".responsive-map-image");
-  const form = document.querySelector("form");
-
-  if (image) {
-    const useMap = image.getAttribute("usemap");
-
-    if (useMap) {
-      const mapName = useMap.replace("#", "");
-      const map = document.querySelector(`map[name="${mapName}"]`);
-
-      if (map) {
-        const originalWidth = Number(image.getAttribute("width"));
-        const originalHeight = Number(image.getAttribute("height"));
-
-        const areas = [...map.querySelectorAll("area")].map(area => ({
-          element: area,
-          shape: area.shape.toLowerCase(),
-          coords: area.coords.split(",").map(Number)
-        }));
-
-        function updateMapCoordinates() {
-          const scaleX = image.clientWidth / originalWidth;
-          const scaleY = image.clientHeight / originalHeight;
-
-          areas.forEach(area => {
-            let scaledCoords;
-
-            if (area.shape === "circle") {
-              scaledCoords = [
-                area.coords[0] * scaleX,
-                area.coords[1] * scaleY,
-                area.coords[2] * Math.min(scaleX, scaleY)
-              ];
-            } else {
-              scaledCoords = area.coords.map((value, index) =>
-                value * (index % 2 === 0 ? scaleX : scaleY)
-              );
-            }
-
-            area.element.coords = scaledCoords
-              .map(value => Math.round(value))
-              .join(",");
-          });
-        }
-
-        image.addEventListener("load", updateMapCoordinates);
-
-        if (image.complete) {
-          updateMapCoordinates();
-        }
-
-        if (typeof ResizeObserver !== "undefined") {
-          const resizeObserver = new ResizeObserver(
-            updateMapCoordinates
-          );
-
-          resizeObserver.observe(image);
-        }
-      }
-    }
-  }
-
-  if (form) {
-    const birthdate = form.querySelector("#birthdate");
-
-    if (birthdate) {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, "0");
-      const day = String(today.getDate()).padStart(2, "0");
-
-      birthdate.max = `${year}-${month}-${day}`;
-    }
-
-    const controls = form.querySelectorAll(
-      'input:not([type="submit"]), select, textarea'
-    );
-
-    controls.forEach(control => {
-      const markAsTouched = () => {
-        const field = control.closest(".form-field");
-
-        if (field) {
-          field.classList.add("touched");
-        }
-      };
-
-      control.addEventListener("blur", markAsTouched);
-      control.addEventListener("input", markAsTouched);
-      control.addEventListener("change", markAsTouched);
-      control.addEventListener("invalid", markAsTouched);
-    });
-
-    form.addEventListener(
-      "invalid",
-      event => {
-        const field = event.target.closest(".form-field");
-
-        if (field) {
-          field.classList.add("touched");
-        }
-      },
-      true
-    );
-  }
-
   const calculator = document.querySelector(".calculator-section");
 
   if (!calculator) {
@@ -269,8 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
       result.textContent = "— ₽";
 
       if (hasOverflow) {
-        error.textContent =
-          "Слишком большая итоговая сумма.";
+        error.textContent = "Слишком большая итоговая сумма.";
       } else if (!hasEmptyValue) {
         error.textContent =
           "Количество должно быть целым неотрицательным числом.";
@@ -333,10 +225,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     minusButton.addEventListener("click", () => {
       const state = getQuantityState(product);
-
       const current = state.valid ? state.quantity : 0;
-      input.value = String(Math.max(0, current - 1));
 
+      input.value = String(Math.max(0, current - 1));
       updateCalculator();
     });
 
@@ -354,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const included = product.dataset.included === "true";
 
       product.dataset.included = String(!included);
-
       updateCalculator();
     });
 
@@ -368,6 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   updateCalculator();
+
   const productDetails = [
     ...document.querySelectorAll(".calculator-product-details")
   ];
