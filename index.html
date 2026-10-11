@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Лабораторная работа №6</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header id="site-header">
+    <img src="header.jpg" alt="Логотип">
+    <h1>Лабораторная работа №6</h1>
+  </header>
+
+  <nav id="site-nav" class="d-flex flex-column flex-lg-row justify-content-lg-center">
+    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#links">Гиперссылки</a>
+    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#table">Таблица</a>
+    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#calculator">Калькулятор</a>
+    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#form">Форма</a>
+  </nav>
+
+  <main class="container py-3 py-lg-5">
+    <div class="row g-3 g-lg-4 page-layout">
+
+      <!-- Right column: table + calculator -->
+
+      <div class="col-12 col-lg-7 order-1 order-lg-2 calculator-layout">
+        <div class="row g-3 g-lg-4">
+
+          <!-- Table -->
+
+          <div class="col-12 order-1 table-column">
+            <section class="table-section p-3 p-lg-4">
+              <h2 id="table" class="mb-3">Таблица</h2>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Название</th>
+                    <th>Тип</th>
+                    <th>Количество</th>
+                    <th>Описание</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>HTML</td>
+                    <td>Разметка</td>
+                    <td>1</td>
+                    <td>Структура страницы</td>
+                  </tr>
+
+                  <tr>
+                    <td>CSS</td>
+                    <td>Оформление</td>
+                    <td>2</td>
+                    <td>Оформление страницы</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2">JavaScript</td>
+                    <td>3</td>
+                    <td>Логика страницы</td>
+                  </tr>
+
+                  <tr>
+                    <td>Git</td>
+                    <td>VCS</td>
+                    <td rowspan="2">4</td>
+                    <td>История изменений</td>
+                  </tr>
+
+                  <tr>
+                    <td>GitLab</td>
+                    <td>Хостинг</td>
+                    <td>Публикация сайта</td>
+                  </tr>
+
+                  <tr>
+                    <td>Nginx</td>
+                    <td>Web server</td>
+                    <td>5</td>
+                    <td>Обработка запросов</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <!-- Calculator -->
+
+          <div class="col-12 order-3 order-lg-2 calculator-column">
+
+            <section class="calculator-section p-3 p-lg-4">
+              <h2 id="calculator" class="mb-3">Калькулятор подписок</h2>
+
+              <p class="calculator-description">
+                Выберите подписки для расчёта и укажите количество месяцев.
+              </p>
+
+              <div class="calculator-products">
+
+                <article class="calculator-product" data-product="chatgpt" data-base-price="1670" data-included="false">
+                  <div class="calculator-product-header">
+                    <span class="calculator-product-logo calculator-logo-chatgpt" role="img"
+                      aria-label="Логотип ChatGPT"></span>
+
+                    <div class="calculator-product-info">
+                      <h3 class="calculator-product-name">ChatGPT</h3>
+                      <p class="calculator-product-price">
+                        <span data-price-label>1 670 ₽ / месяц</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="calculator-product-bottom">
+                    <div class="calculator-quantity-group">
+                      <label class="calculator-quantity-label" for="quantity-chatgpt">
+                        Количество месяцев
+                      </label>
+
+                      <div class="calculator-product-controls">
+                        <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
+                          aria-label="Уменьшить количество месяцев ChatGPT" disabled>−</button>
+
+                        <input id="quantity-chatgpt" class="calculator-product-quantity" type="text" inputmode="numeric"
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев ChatGPT Plus">
+
+                        <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
+                          aria-label="Увеличить количество месяцев ChatGPT">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="calculator-product-toggle" data-action="toggle-product"
+                    aria-pressed="false" aria-label="Добавить или исключить ChatGPT Plus из расчёта">
+                    Добавить в расчёт
+                  </button>
+                  <details class="calculator-product-details">
+                    <summary>Подробнее</summary>
+                    <div class="calculator-product-description">
+                      <p>ChatGPT Plus предназначен для работы с текстом, анализа информации, генерации идей и помощи в
+                        программировании.</p>
+                      <p><strong>Количество месяцев</strong> определяет длительность подписки. <strong>Добавление в
+                          расчёт</strong> включает услугу в итоговую стоимость.</p>
+                    </div>
+                  </details>
+                </article>
+
+                <article class="calculator-product" data-product="claude" data-base-price="1670" data-included="false">
+                  <div class="calculator-product-header">
+                    <span class="calculator-product-logo calculator-logo-claude" role="img"
+                      aria-label="Логотип Claude"></span>
+
+                    <div class="calculator-product-info">
+                      <h3 class="calculator-product-name">Claude</h3>
+                      <p class="calculator-product-price">
+                        <span data-price-label>1 670 ₽ / месяц</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="calculator-product-extra">
+                    <label class="calculator-plan-label" for="claude-plan">
+                      Тариф
+                    </label>
+
+                    <select id="claude-plan" class="form-select calculator-plan-select" name="claude-plan">
+                      <option value="pro" data-price="1700" selected>
+                        Claude Pro
+                      </option>
+
+                      <option value="max-5x" data-price="8500">
+                        Claude Max 5x
+                      </option>
+
+                      <option value="max-20x" data-price="17000">
+                        Claude Max 20x
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="calculator-product-bottom">
+                    <div class="calculator-quantity-group">
+                      <label class="calculator-quantity-label" for="quantity-claude">
+                        Количество месяцев
+                      </label>
+
+                      <div class="calculator-product-controls">
+                        <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
+                          aria-label="Уменьшить количество месяцев Claude" disabled>−</button>
+
+                        <input id="quantity-claude" class="calculator-product-quantity" type="text" inputmode="numeric"
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев Claude">
+
+                        <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
+                          aria-label="Увеличить количество месяцев Claude">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="calculator-product-toggle" data-action="toggle-product"
+                    aria-pressed="false" aria-label="Добавить или исключить Claude из расчёта">
+                    Добавить в расчёт
+                  </button>
+                  <details class="calculator-product-details">
+                    <summary>Подробнее</summary>
+                    <div class="calculator-product-description">
+                      <p>Claude ориентирован на анализ информации, работу с объёмными текстами и программирование.</p>
+                      <p><strong>Тариф</strong> определяет стоимость подписки. <strong>Количество месяцев</strong>
+                        задаёт длительность использования.</p>
+                    </div>
+                  </details>
+                </article>
+
+                <article class="calculator-product" data-product="gemini" data-base-price="1670" data-included="false">
+                  <div class="calculator-product-header">
+                    <span class="calculator-product-logo calculator-logo-gemini" role="img"
+                      aria-label="Логотип Gemini"></span>
+
+                    <div class="calculator-product-info">
+                      <h3 class="calculator-product-name">Gemini</h3>
+                      <p class="calculator-product-price">
+                        <span data-price-label>1 670 ₽ / месяц</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="calculator-product-bottom">
+                    <div class="calculator-product-extra calculator-gemini-extra">
+                      <label class="calculator-feature" for="gemini-ultra">
+                        <input id="gemini-ultra" class="form-check-input" type="checkbox" name="gemini-ultra"
+                          data-price="8500">
+
+                        <span class="calculator-feature-copy">
+                          <span class="calculator-feature-title">
+                            Google AI Ultra
+                          </span>
+
+                          <small>
+                            Расширенный тариф с дополнительными возможностями.
+                          </small>
+                        </span>
+                      </label>
+                    </div>
+
+                    <div class="calculator-quantity-group">
+                      <label class="calculator-quantity-label" for="quantity-gemini">
+                        Количество месяцев
+                      </label>
+
+                      <div class="calculator-product-controls">
+                        <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
+                          aria-label="Уменьшить количество месяцев Gemini" disabled>−</button>
+
+                        <input id="quantity-gemini" class="calculator-product-quantity" type="text" inputmode="numeric"
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев Gemini">
+
+                        <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
+                          aria-label="Увеличить количество месяцев Gemini">+</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="calculator-product-toggle" data-action="toggle-product"
+                    aria-pressed="false" aria-label="Добавить или исключить Gemini из расчёта">
+                    Добавить в расчёт
+                  </button>
+                  <details class="calculator-product-details">
+                    <summary>Подробнее</summary>
+                    <div class="calculator-product-description">
+                      <p>Gemini предназначен для работы с текстом, анализа информации и программирования в экосистеме
+                        Google.</p>
+                      <p><strong>Google AI Ultra</strong> переключает расчёт на расширенный тариф. <strong>Количество
+                          месяцев</strong> определяет длительность подписки.</p>
+                    </div>
+                  </details>
+                </article>
+
+              </div>
+
+              <div id="calculator-error" class="calculator-error" aria-live="polite"></div>
+
+              <div class="calculator-total">
+                <span class="calculator-total-label">Итого:</span>
+                <span id="calculator-result">0 ₽</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- Links -->
+
+      <div class="col-12 col-lg-5 order-2 order-lg-1 links-column">
+        <section class="links-section p-3 p-lg-4">
+          <h2 id="links" class="mb-3">Гиперссылки</h2>
+
+          <ul class="list-unstyled mb-0">
+            <li><a href="http://kubsu.ru/">КубГУ</a></li>
+            <li><a href="https://kubsu.ru/">КубГУ по HTTPS</a></li>
+
+            <li>
+              <a href="https://kubsu.ru/">
+                <img src="image.jpg" alt="КубГУ" width="200">
+              </a>
+            </li>
+
+            <li>
+              <a href="/about">
+                Сокращенная ссылка на внутреннюю страницу
+              </a>
+            </li>
+
+            <li>
+              <a href="/">
+                Сокращенная ссылка на главную страницу
+              </a>
+            </li>
+
+            <li>
+              <a href="#form">
+                Ссылка на фрагмент текущей страницы
+              </a>
+            </li>
+
+            <li>
+              <a href="https://example.com/?name=ivan&amp;group=2&amp;course=2">
+                Ссылка с тремя параметрами
+              </a>
+            </li>
+
+            <li>
+              <a href="https://example.com/?id=123">
+                Ссылка с параметром id
+              </a>
+            </li>
+
+            <li>
+              <a href="./demo.html">
+                Ссылка на страницу в текущем каталоге
+              </a>
+            </li>
+
+            <li>
+              <a href="./about/about.html">
+                Ссылка на страницу в каталоге about
+              </a>
+            </li>
+
+            <li>
+              <a href="../index.html">
+                Ссылка на страницу уровнем выше
+              </a>
+            </li>
+
+            <li>
+              <a href="../../index.html">
+                Ссылка на страницу двумя уровнями выше
+              </a>
+            </li>
+
+            <li>
+              Текст с
+              <a href="https://developer.mozilla.org/ru/docs/Web/HTML">
+                контекстной ссылкой
+              </a>
+              внутри.
+            </li>
+
+            <li>
+              <a href="https://developer.mozilla.org/ru/docs/Web/HTML#элементы_и_атрибуты">
+                Ссылка на фрагмент страницы другого сайта
+              </a>
+            </li>
+
+            <li>
+              <img src="image.jpg" alt="Картинка" width="400" height="300" class="responsive-map-image" usemap="#map">
+
+              <map name="map">
+                <area shape="poly" coords="0,0,100,0,0,75" href="https://kubsu.ru/" alt="КубГУ">
+
+                <area shape="poly" coords="400,0,300,0,400,75" href="https://kubsu.ru/" alt="КубГУ">
+
+                <area shape="poly" coords="0,300,100,300,0,225" href="https://kubsu.ru/" alt="КубГУ">
+
+                <area shape="poly" coords="400,300,300,300,400,225" href="https://kubsu.ru/" alt="КубГУ">
+
+                <area shape="circle" coords="200,150,50" href="https://www.wikipedia.org/" alt="Wikipedia">
+              </map>
+            </li>
+
+            <li><a href="">Ссылка с пустым href</a></li>
+            <li><a>Ссылка без href</a></li>
+
+            <li>
+              <a href="https://example.com/" rel="nofollow">
+                Ссылка с запретом перехода поисковика
+              </a>
+            </li>
+
+            <li>
+              <a href="https://example.com/" rel="noindex">
+                Ссылка с запретом индексации
+              </a>
+            </li>
+
+            <li>
+              <ol>
+                <li>
+                  <a href="https://kubsu.ru/" title="Официальный сайт КубГУ">
+                    КубГУ
+                  </a>
+                </li>
+
+                <li>
+                  <a href="https://www.google.com/" title="Google">
+                    Google
+                  </a>
+                </li>
+
+                <li>
+                  <a href="https://www.wikipedia.org/" title="Wikipedia">
+                    Wikipedia
+                  </a>
+                </li>
+              </ol>
+            </li>
+
+            <li>
+              <a href="ftp://student:password@example.com/files/file.txt">
+                FTP-ссылка с авторизацией
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Form -->
+
+      <div class="col-12 order-4 form-column">
+        <section class="form-section p-3 p-lg-4">
+          <h2 id="form" class="mb-3">Форма</h2>
+
+          <form action="/" method="POST">
+
+            <div class="row g-3">
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="fullname">
+                    ФИО
+                  </label>
+
+                  <input id="fullname" type="text" class="form-control" name="fullname" pattern="[A-Za-zА-Яа-яЁё\s\-]+"
+                    title="Используйте только буквы, пробелы и дефис" required>
+
+                  <span class="validation-message">
+                    ФИО может содержать только буквы, пробелы и дефис.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="birthdate">
+                    Дата рождения
+                  </label>
+
+                  <input id="birthdate" type="date" class="form-control" name="birthdate" required>
+
+                  <span class="validation-message">
+                    Укажите дату рождения.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="phone">
+                    Телефон
+                  </label>
+
+                  <input id="phone" type="tel" class="form-control" name="phone" pattern="\+?[0-9][0-9\s\(\)\-]*"
+                    title="Введите корректный номер телефона" required>
+
+                  <span class="validation-message">
+                    Используйте цифры, пробелы, +, - и скобки.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <span class="form-label d-block">
+                    Пол
+                  </span>
+
+                  <div class="gender-options">
+                    <div class="form-check">
+                      <input id="gender-male" class="form-check-input" type="radio" name="gender" value="male" required>
+
+                      <label class="form-check-label" for="gender-male">
+                        Мужской
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input id="gender-female" class="form-check-input" type="radio" name="gender" value="female">
+
+                      <label class="form-check-label" for="gender-female">
+                        Женский
+                      </label>
+                    </div>
+                  </div>
+
+                  <span class="validation-message">
+                    Выберите пол.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="email">
+                    E-mail
+                  </label>
+
+                  <input id="email" type="email" class="form-control" name="email"
+                    title="Введите корректный адрес электронной почты" required>
+
+                  <span class="validation-message">
+                    Введите корректный адрес электронной почты.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="language">
+                    Любимый язык программирования
+                  </label>
+
+                  <select id="language" class="form-select" name="language" required>
+                    <option value="" selected disabled>
+                      Выберите язык
+                    </option>
+
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="CSharp">C#</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="TypeScript">TypeScript</option>
+                    <option value="Python">Python</option>
+                    <option value="PHP">PHP</option>
+                    <option value="Go">Go</option>
+                    <option value="Rust">Rust</option>
+                    <option value="Kotlin">Kotlin</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Haskell">Haskell</option>
+                    <option value="Clojure">Clojure</option>
+                    <option value="Prolog">Prolog</option>
+                    <option value="Scala">Scala</option>
+                    <option value="Nix">Nix</option>
+                  </select>
+
+                  <span class="validation-message">
+                    Выберите язык программирования.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 biography-field">
+                <div class="form-field d-flex flex-column">
+                  <label class="form-label" for="biography">
+                    Биография
+                  </label>
+
+                  <textarea id="biography" class="form-control" name="biography" rows="6" maxlength="1000"
+                    required></textarea>
+
+                  <span class="validation-message">
+                    Заполните биографию.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <div class="form-field">
+
+                  <div class="form-check d-inline-flex align-items-center">
+                    <input id="contract" class="form-check-input me-2" type="checkbox" name="contract" required>
+
+                    <label class="form-check-label" for="contract">
+                      С контрактом ознакомлен
+                    </label>
+                  </div>
+
+                  <span class="validation-message">
+                    Необходимо подтвердить ознакомление с контрактом.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 text-center">
+                <input type="submit" class="px-4 py-2" value="Сохранить">
+              </div>
+
+            </div>
+
+          </form>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    (с) Бондаренко Андрей Евгеньевич
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
