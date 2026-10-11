@@ -506,109 +506,66 @@
           <h2 id="form" class="mb-3">Форма</h2>
 
           <form action="/" method="POST">
-
-            <div class="row g-3">
-
-              <div class="col-12 col-lg-6">
+            <div class="form-layout">
+              <div class="form-field-column">
                 <div class="form-field">
-                  <label class="form-label" for="fullname">
-                    ФИО
-                  </label>
-
-                  <input id="fullname" type="text" class="form-control" name="fullname" pattern="[A-Za-zА-Яа-яЁё\s\-]+"
-                    title="Используйте только буквы, пробелы и дефис" required>
-
-                  <span class="validation-message">
-                    ФИО может содержать только буквы, пробелы и дефис.
-                  </span>
+                  <label class="form-label" for="fullname">ФИО</label>
+                  <input id="fullname" type="text" class="form-control" name="fullname"
+                    pattern="[A-Za-zА-Яа-яЁё\s\-]+" title="Используйте только буквы, пробелы и дефис" required>
+                  <span class="validation-message">ФИО может содержать только буквы, пробелы и дефис.</span>
                 </div>
-              </div>
 
-              <div class="col-12 col-lg-6">
                 <div class="form-field">
-                  <label class="form-label" for="birthdate">
-                    Дата рождения
-                  </label>
+                  <label class="form-label" for="phone">Телефон</label>
+                  <input id="phone" type="tel" class="form-control" name="phone"
+                    pattern="\+?[0-9][0-9\s\(\)\-]*" title="Введите корректный номер телефона" required>
+                  <span class="validation-message">Используйте цифры, пробелы, +, - и скобки.</span>
+                </div>
 
+                <div class="form-field">
+                  <label class="form-label" for="email">E-mail</label>
+                  <input id="email" type="email" class="form-control" name="email"
+                    title="Введите корректный адрес электронной почты" required>
+                  <span class="validation-message">Введите корректный адрес электронной почты.</span>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label" for="birthdate">Дата рождения</label>
                   <input id="birthdate" type="date" class="form-control" name="birthdate" required>
+                  <span class="validation-message">Укажите дату рождения.</span>
+                </div>
 
-                  <span class="validation-message">
-                    Укажите дату рождения.
-                  </span>
+                <div class="form-submit">
+                  <input type="submit" class="px-4 py-2" value="Сохранить">
                 </div>
               </div>
 
-              <div class="col-12 col-lg-6">
+              <div class="form-field-column">
                 <div class="form-field">
-                  <label class="form-label" for="phone">
-                    Телефон
-                  </label>
-
-                  <input id="phone" type="tel" class="form-control" name="phone" pattern="\+?[0-9][0-9\s\(\)\-]*"
-                    title="Введите корректный номер телефона" required>
-
-                  <span class="validation-message">
-                    Используйте цифры, пробелы, +, - и скобки.
-                  </span>
+                  <label class="form-label" for="favorite-artist">Любимый исполнитель или группа</label>
+                  <input id="favorite-artist" type="text" class="form-control" name="favorite-artist"
+                    maxlength="100" placeholder="Например, Noisia">
                 </div>
-              </div>
 
-              <div class="col-12 col-lg-6">
                 <div class="form-field">
-                  <span class="form-label d-block">
-                    Пол
-                  </span>
-
+                  <span class="form-label d-block">Пол</span>
                   <div class="gender-options">
                     <div class="form-check">
                       <input id="gender-male" class="form-check-input" type="radio" name="gender" value="male" required>
-
-                      <label class="form-check-label" for="gender-male">
-                        Мужской
-                      </label>
+                      <label class="form-check-label" for="gender-male">Мужской</label>
                     </div>
-
                     <div class="form-check">
                       <input id="gender-female" class="form-check-input" type="radio" name="gender" value="female">
-
-                      <label class="form-check-label" for="gender-female">
-                        Женский
-                      </label>
+                      <label class="form-check-label" for="gender-female">Женский</label>
                     </div>
                   </div>
-
-                  <span class="validation-message">
-                    Выберите пол.
-                  </span>
+                  <span class="validation-message">Выберите пол.</span>
                 </div>
-              </div>
 
-              <div class="col-12 col-lg-6">
                 <div class="form-field">
-                  <label class="form-label" for="email">
-                    E-mail
-                  </label>
-
-                  <input id="email" type="email" class="form-control" name="email"
-                    title="Введите корректный адрес электронной почты" required>
-
-                  <span class="validation-message">
-                    Введите корректный адрес электронной почты.
-                  </span>
-                </div>
-              </div>
-
-              <div class="col-12 col-lg-6">
-                <div class="form-field">
-                  <label class="form-label" for="language">
-                    Любимый язык программирования
-                  </label>
-
+                  <label class="form-label" for="language">Любимый язык программирования</label>
                   <select id="language" class="form-select" name="language" required>
-                    <option value="" selected disabled>
-                      Выберите язык
-                    </option>
-
+                    <option value="" selected disabled>Выберите язык</option>
                     <option value="C">C</option>
                     <option value="C++">C++</option>
                     <option value="CSharp">C#</option>
@@ -627,19 +584,11 @@
                     <option value="Scala">Scala</option>
                     <option value="Nix">Nix</option>
                   </select>
-
-                  <span class="validation-message">
-                    Выберите язык программирования.
-                  </span>
+                  <span class="validation-message">Выберите язык программирования.</span>
                 </div>
-              </div>
 
-              <div class="col-12 col-lg-6">
                 <div class="form-field">
-                  <label class="form-label" for="favorite-genre">
-                    Любимый музыкальный жанр
-                  </label>
-
+                  <label class="form-label" for="favorite-genre">Любимый музыкальный жанр</label>
                   <select id="favorite-genre" class="form-select" name="favorite-genre" required>
                     <option value="" selected disabled>Выберите жанр</option>
                     <option value="alternative-rock">Alternative Rock</option>
@@ -666,58 +615,25 @@
                     <option value="techno">Techno</option>
                     <option value="trance">Trance</option>
                   </select>
-
-                  <span class="validation-message">
-                    Выберите любимый музыкальный жанр.
-                  </span>
+                  <span class="validation-message">Выберите любимый музыкальный жанр.</span>
                 </div>
-              </div>
 
-              <div class="col-12 col-lg-6">
-                <div class="form-field">
-                  <label class="form-label" for="favorite-artist">
-                    Любимый исполнитель или группа
-                  </label>
-
-                  <input id="favorite-artist" type="text" class="form-control" name="favorite-artist"
-                    maxlength="100" placeholder="Например, Noisia">
-                </div>
-              </div>
-
-              <div class="col-12 biography-field">
-                <div class="form-field d-flex flex-column">
-                  <label class="form-label" for="biography">
-                    Биография
-                  </label>
-
-                  <textarea id="biography" class="form-control" name="biography" rows="6" maxlength="1000"
-                    required></textarea>
-
-                  <span class="validation-message">
-                    Заполните биографию.
-                  </span>
-                </div>
-              </div>
-
-              <div class="col-12 text-center">
-                <div class="form-field">
-
+                <div class="form-field contract-field">
                   <div class="form-check d-inline-flex align-items-center">
                     <input id="contract" class="form-check-input me-2" type="checkbox" name="contract" required>
-
-                    <label class="form-check-label" for="contract">
-                      С контрактом ознакомлен
-                    </label>
+                    <label class="form-check-label" for="contract">С контрактом ознакомлен</label>
                   </div>
-
-                  <span class="validation-message">
-                    Необходимо подтвердить ознакомление с контрактом.
-                  </span>
+                  <span class="validation-message">Необходимо подтвердить ознакомление с контрактом.</span>
                 </div>
               </div>
 
-              <div class="col-12 text-center">
-                <input type="submit" class="px-4 py-2" value="Сохранить">
+              <div class="form-profile-column">
+                <div class="form-field biography-field">
+                  <label class="form-label" for="biography">Биография</label>
+                  <textarea id="biography" class="form-control" name="biography" rows="6" maxlength="1000"
+                    required></textarea>
+                  <span class="validation-message">Заполните биографию.</span>
+                </div>
               </div>
 
             </div>

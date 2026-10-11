@@ -191,13 +191,11 @@ main.container {
   width: min(92%, 1400px);
   height: 90%;
   border-radius: 50%;
-  background: radial-gradient(
-    ellipse,
-    rgba(102, 196, 255, 0.9) 0%,
-    rgba(63, 145, 255, 0.68) 24%,
-    rgba(36, 91, 255, 0.36) 48%,
-    rgba(36, 91, 255, 0) 72%
-  );
+  background: radial-gradient(ellipse,
+      rgba(102, 196, 255, 0.9) 0%,
+      rgba(63, 145, 255, 0.68) 24%,
+      rgba(36, 91, 255, 0.36) 48%,
+      rgba(36, 91, 255, 0) 72%);
   content: "";
   filter: blur(82px);
   opacity: 1;
@@ -236,9 +234,7 @@ main.container {
   opacity: var(--slide-opacity);
   filter: saturate(var(--slide-saturation)) brightness(var(--slide-brightness));
   pointer-events: none;
-  transform: translate(-50%, -50%) translateX(var(--slide-x))
-    translateZ(var(--slide-depth)) perspective(1000px) rotateY(var(--slide-rotation))
-    scale(var(--slide-scale));
+  transform: translate(-50%, -50%) translateX(var(--slide-x)) translateZ(var(--slide-depth)) perspective(1000px) rotateY(var(--slide-rotation)) scale(var(--slide-scale));
   transition: transform 420ms ease, opacity 420ms ease, filter 420ms ease;
   will-change: transform, opacity;
 }
@@ -533,36 +529,60 @@ form .form-check-input:focus {
 }
 
 .gender-options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 28px;
-  margin-top: 3px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .gender-options .form-check {
+  position: relative;
+  min-width: 0;
   margin: 0;
-  padding-left: 1.6rem;
+  padding: 0;
 }
 
 .gender-options .form-check-input {
-  margin-top: 0.22rem;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .gender-options .form-check-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-alt);
   color: var(--text);
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 
-.gender-options .form-check-input:checked {
+.gender-options .form-check-label:hover {
   border-color: var(--accent);
-  background-color: var(--accent);
+  background: var(--surface-raised);
 }
 
-.gender-options .form-check-input:focus {
-  border-color: var(--accent-light);
-  box-shadow: 0 0 0 2px rgba(61, 109, 255, 0.24);
+.gender-options .form-check-input:checked+.form-check-label {
+  border-color: var(--accent);
+  background: var(--surface-raised);
+  color: var(--accent-light);
+  box-shadow: none;
+}
+
+.gender-options .form-check-input:focus-visible+.form-check-label {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
 }
 
 .biography-field textarea {
@@ -1576,6 +1596,7 @@ form input[type="submit"]:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .gallery-slide,
   .gallery-arrow,
   .gallery-pagination button {
@@ -1619,6 +1640,7 @@ form input[type="submit"]:hover {
 }
 
 @media screen and (max-width: 991.98px) {
+
   .links-section ul,
   .links-section li {
     width: 100%;
@@ -1660,11 +1682,11 @@ form input[type="submit"]:hover {
     font-size: 15px;
   }
 
-  .calculator-section .calculator-product-details > summary {
+  .calculator-section .calculator-product-details>summary {
     font-size: 16px;
   }
 
-  .calculator-section .calculator-product-details > summary::after {
+  .calculator-section .calculator-product-details>summary::after {
     font-size: 20px;
   }
 
@@ -1782,5 +1804,143 @@ form input[type="submit"]:hover {
 
   #site-nav a[href="#form"] {
     order: 5;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .form-section form .form-layout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 24px;
+    min-height: 0;
+  }
+
+  .form-field-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .form-profile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .form-profile-column .biography-field {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .form-profile-column .biography-field textarea {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .form-section .contract-field {
+    margin: 0;
+  }
+
+  .form-section .contract-field .form-check {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .form-section .contract-field .validation-message {
+    text-align: center;
+  }
+
+  .form-section .contract-field .form-check-label {
+    font-size: 24px;
+  }
+
+  .form-section .contract-field .form-check-input {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+
+  .form-section .form-submit {
+    display: flex;
+  }
+
+  .form-section .form-submit input[type="submit"] {
+    width: 100%;
+    min-width: 0;
+    min-height: 60px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-field-column,
+  .form-profile-column {
+    display: contents;
+  }
+
+  .form-field-column:first-child>.form-field:nth-child(1) {
+    order: 1;
+  }
+
+  .form-field-column:first-child>.form-field:nth-child(2) {
+    order: 2;
+  }
+
+  .form-field-column:first-child>.form-field:nth-child(3) {
+    order: 3;
+  }
+
+  .form-field-column:first-child>.form-field:nth-child(4) {
+    order: 4;
+  }
+
+  .form-field-column:nth-child(2)>.form-field:nth-child(1) {
+    order: 6;
+  }
+
+  .form-field-column:nth-child(2)>.form-field:nth-child(2) {
+    order: 5;
+  }
+
+  .form-field-column:nth-child(2)>.form-field:nth-child(3) {
+    order: 7;
+  }
+
+  .form-field-column:nth-child(2)>.form-field:nth-child(4) {
+    order: 8;
+  }
+
+  .form-profile-column>.biography-field {
+    order: 9;
+  }
+
+  .form-field-column:nth-child(2)>.contract-field {
+    order: 10;
+  }
+
+  .form-field-column:first-child>.form-submit {
+    order: 11;
+  }
+
+  .form-profile-column .biography-field textarea {
+    min-height: 150px;
+  }
+
+  .form-section .form-submit {
+    display: flex;
+    justify-content: center;
   }
 }
