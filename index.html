@@ -31,7 +31,7 @@
 
       <!-- Right column: table + calculator -->
 
-      <div class="col-12 col-lg-7 order-1 order-lg-2 calculator-layout">
+      <div class="col-12 col-lg-8 order-1 order-lg-2 calculator-layout">
         <div class="row g-3 g-lg-4">
 
           <!-- Table -->
@@ -40,58 +40,50 @@
             <section class="table-section p-3 p-lg-4">
               <h2 id="table" class="mb-3">Таблица</h2>
 
-              <table>
-                <thead>
-                  <tr>
-                    <th>Название</th>
-                    <th>Тип</th>
-                    <th>Количество</th>
-                    <th>Описание</th>
-                  </tr>
-                </thead>
+              <div class="table-scroll" tabindex="0" role="region" aria-label="Справочник жанров электронной музыки. Прокрутка по горизонтали">
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="3">Брейкбит и басовая электроника</th>
+                    </tr>
+                    <tr>
+                      <th>Ритмическая основа</th>
+                      <th>Жанр</th>
+                      <th>Особенности звучания</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  <tr>
-                    <td>HTML</td>
-                    <td>Разметка</td>
-                    <td>1</td>
-                    <td>Структура страницы</td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td rowspan="3">Брейкбит</td>
+                      <td>DnB</td>
+                      <td>Быстрый ломаный ритм, плотный бас, энергичная подача.</td>
+                    </tr>
 
-                  <tr>
-                    <td>CSS</td>
-                    <td>Оформление</td>
-                    <td>2</td>
-                    <td>Оформление страницы</td>
-                  </tr>
+                    <tr>
+                      <td>Jungle</td>
+                      <td>Рваные брейкбиты, глубокий бас, регги- и даб-сэмплы.</td>
+                    </tr>
 
-                  <tr>
-                    <td colspan="2">JavaScript</td>
-                    <td>3</td>
-                    <td>Логика страницы</td>
-                  </tr>
+                    <tr>
+                      <td>Breakcore</td>
+                      <td>Дробные брейкбиты, резкие смены ритма и плотные слои звука.</td>
+                    </tr>
 
-                  <tr>
-                    <td>Git</td>
-                    <td>VCS</td>
-                    <td rowspan="2">4</td>
-                    <td>История изменений</td>
-                  </tr>
+                    <tr>
+                      <td>Свободная шумовая структура</td>
+                      <td>Noise</td>
+                      <td>Шумовые текстуры, индустриальные тембры и отсутствие устойчивого ритмического рисунка.</td>
+                    </tr>
 
-                  <tr>
-                    <td>GitLab</td>
-                    <td>Хостинг</td>
-                    <td>Публикация сайта</td>
-                  </tr>
-
-                  <tr>
-                    <td>Nginx</td>
-                    <td>Web server</td>
-                    <td>5</td>
-                    <td>Обработка запросов</td>
-                  </tr>
-                </tbody>
-              </table>
+                    <tr>
+                      <td>Полутемповый ритм</td>
+                      <td>Dubstep</td>
+                      <td>Тяжёлый бас, синкопы и просторные паузы.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
           </div>
 
@@ -300,7 +292,7 @@
 
       <!-- Links -->
 
-      <div class="col-12 col-lg-5 order-2 order-lg-1 links-column">
+      <div class="col-12 col-lg-4 order-2 order-lg-1 links-column">
         <section class="links-section p-3 p-lg-4">
           <h2 id="links" class="mb-3">Гиперссылки</h2>
 
@@ -635,6 +627,56 @@
                   <span class="validation-message">
                     Выберите язык программирования.
                   </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="favorite-genre">
+                    Любимый музыкальный жанр
+                  </label>
+
+                  <select id="favorite-genre" class="form-select" name="favorite-genre" required>
+                    <option value="" selected disabled>Выберите жанр</option>
+                    <option value="alternative-rock">Alternative Rock</option>
+                    <option value="ambient">Ambient</option>
+                    <option value="blues">Blues</option>
+                    <option value="breakcore">Breakcore</option>
+                    <option value="classical">Классическая музыка</option>
+                    <option value="country">Country</option>
+                    <option value="dnb">Drum and Bass (DnB)</option>
+                    <option value="dubstep">Dubstep</option>
+                    <option value="electronic">Электронная музыка</option>
+                    <option value="funk">Funk</option>
+                    <option value="hip-hop">Hip-hop</option>
+                    <option value="house">House</option>
+                    <option value="indie">Indie</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="jungle">Jungle</option>
+                    <option value="metal">Metal</option>
+                    <option value="pop">Pop</option>
+                    <option value="punk">Punk</option>
+                    <option value="reggae">Reggae</option>
+                    <option value="rock">Rock</option>
+                    <option value="soul">Soul</option>
+                    <option value="techno">Techno</option>
+                    <option value="trance">Trance</option>
+                  </select>
+
+                  <span class="validation-message">
+                    Выберите любимый музыкальный жанр.
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                <div class="form-field">
+                  <label class="form-label" for="favorite-artist">
+                    Любимый исполнитель или группа
+                  </label>
+
+                  <input id="favorite-artist" type="text" class="form-control" name="favorite-artist"
+                    maxlength="100" placeholder="Например, Noisia">
                 </div>
               </div>
 

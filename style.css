@@ -343,10 +343,23 @@ main a:hover {
   scroll-margin-top: 20px;
 }
 
-table {
+.table-scroll {
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+}
+
+.table-scroll:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+table {
+  width: 100%;
+  min-width: 440px;
   border: 1px solid var(--border);
   border-spacing: 0;
   border-collapse: separate;
@@ -356,12 +369,18 @@ table {
   font-size: 14px;
 }
 
+.table-section thead th {
+  font-size: 20px;
+}
+
 th,
 td {
   padding: 8px 10px;
   border: 1px solid var(--border);
   text-align: left;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 th {
@@ -996,18 +1015,18 @@ form input[type="submit"]:hover {
 
   .page-layout>.calculator-layout {
     display: flex !important;
-    flex: 0 0 58.33333333% !important;
-    width: 58.33333333% !important;
-    max-width: 58.33333333% !important;
+    flex: 0 0 66.66666667% !important;
+    width: 66.66666667% !important;
+    max-width: 66.66666667% !important;
     min-width: 0;
     order: 2 !important;
     align-self: stretch;
   }
 
   .page-layout>.links-column {
-    flex: 0 0 41.66666667% !important;
-    width: 41.66666667% !important;
-    max-width: 41.66666667% !important;
+    flex: 0 0 33.33333333% !important;
+    width: 33.33333333% !important;
+    max-width: 33.33333333% !important;
     order: 1 !important;
     align-self: stretch;
   }
@@ -1051,6 +1070,20 @@ form input[type="submit"]:hover {
 
   .links-column .links-section {
     height: 100%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .page-layout>.calculator-layout {
+    flex-basis: 75% !important;
+    width: 75% !important;
+    max-width: 75% !important;
+  }
+
+  .page-layout>.links-column {
+    flex-basis: 25% !important;
+    width: 25% !important;
+    max-width: 25% !important;
   }
 }
 
@@ -1490,5 +1523,100 @@ form input[type="submit"]:hover {
 
   .calculator-section .calculator-product-price {
     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .table-section thead th {
+    font-size: 22px;
+  }
+
+  .table-section tbody td {
+    font-size: 22px;
+  }
+
+  .calculator-section .calculator-product-description p {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .links-section ul,
+  .links-section li {
+    width: 100%;
+  }
+
+  .links-section img {
+    width: 100%;
+  }
+
+  .calculator-section h2 {
+    font-size: 25px;
+  }
+
+  .calculator-section .calculator-description {
+    font-size: 19px;
+  }
+
+  .calculator-section .calculator-product-name {
+    font-size: 23px;
+  }
+
+  .calculator-section .calculator-product-price {
+    font-size: 18px;
+  }
+
+  .calculator-section .calculator-product-toggle {
+    min-height: 72px;
+    height: auto;
+    font-size: 16px;
+  }
+
+  .calculator-section .calculator-plan-label,
+  .calculator-section .calculator-plan-select,
+  .calculator-section .calculator-feature-title {
+    font-size: 18px;
+  }
+
+  .calculator-section .calculator-feature-copy small {
+    font-size: 15px;
+  }
+
+  .calculator-section .calculator-product-details > summary {
+    font-size: 16px;
+  }
+
+  .calculator-section .calculator-product-details > summary::after {
+    font-size: 20px;
+  }
+
+  .calculator-section .calculator-product-description p {
+    font-size: 16px;
+  }
+
+  .calculator-section .calculator-button {
+    font-size: 25px;
+  }
+
+  .calculator-section .calculator-product-quantity {
+    font-size: 21px;
+  }
+
+  .calculator-section .calculator-error {
+    font-size: 18px;
+  }
+
+  .calculator-section .calculator-total-label {
+    font-size: 21px;
+  }
+
+  .calculator-section #calculator-result {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .calculator-section .calculator-product-name {
+    font-size: 32px;
   }
 }
